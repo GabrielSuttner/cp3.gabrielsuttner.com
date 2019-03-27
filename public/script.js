@@ -8,9 +8,9 @@ function hideButton() {
 	}else{
 		document.getElementById('toggleOn').style.display = 'block';
 		document.getElementById('toggleOff').style.display = 'none';
-		document.getElementById('toggleButton').innerText ='Add Day';
+		document.getElementById('toggleButton').innerText = 'Add Day';
 	}
-
+ 
 
 
 }

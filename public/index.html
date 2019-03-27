@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<!--designer: GabrielSuttner-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Sales</title>
+		<link href="Styles.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="vuestyle.css"/>
+	</head>
+	<body>
+		<header>
+			<ul id="nav-bar">
+				<li><a href="../index.html" id="homeLinkhomeLink">Home</a></li>
+				<li><a href="#">Reviews</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contactpage.html">Contact Page</a></li>
+				<li><a href="workexperience.html">Work Experience</a></li>
+			</ul>
+		</header>
+		<section id="wrapper-home" class="sales">
+			<div></div>
+			<div>
+				<hr> 
+<!--Output saved Data-->
+				<div id="app">
+					<table>
+						<tr id="table-head">
+							<th>Date</th>
+							<th>Name</th>
+							<th>Contract Value</th>
+							<th>Commission</th>
+							<th class="endCol">Payed</th>
+							<th class="endcol">Delete</th>
+						</tr>
+						<tr v-for="sale in filterdSales">
+							<td><i class="fa fa-edit"></i>&nbsp{{sale.date}}</td>
+							<td>{{sale.name}}</td>
+							<td>${{sale.contractValue}}.00</th>
+							<td>${{sale.commission}}.00</td>
+							<td class="endCol"><input type="checkbox"  v-on:click="paySale(sale)" :checked="sale.payed == true"> </input></td>
+							<td class="endcol"><button  v-on:click="deleteSale(sale)" class="delete">X</input> </td> 
+						</tr>
+						<tr id="table-head">
+							<th>Total:</th>
+							<th>${{commissionTotal}}.00</th>
+							<th>Sales:</th>
+							<th>{{totalSales}}</th>
+							<th>paid:</th>
+							<th>{{payedCommissionTotal}}</th>
+						</tr>
+
+					</table>
+					<div class="mastheadc-2">
+						<!--Form to submit new data-->
+						<form v-on:submit.prevent="addSale">
+							<div>
+								<br>
+								<div>
+									<label>Date&nbsp&nbsp</label><input v-model = "addedDate" placeholder="" /><br>
+									<label>Name</label><input v-model = "addedName" placeholder=""/><br>
+									<label>Price&nbsp</label><input v-model = "addedPrice" placeholder=""/><br>
+									<input type="radio" id="quarterly" v-model = "picked" value="Quarterly"/><label for="quarterly">Quarterly</label>
+									<input type="radio" id="bi-monthly" v-model = "picked" value="Bi-Monthly"/><label for="bi-monthly">Bi-Monthly</label>
+									<br>
+									<button type="submit" >Add Sale</button>
+									<button type="submit">Edit Sale</button>i
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div></div>
+		</section>
+ <!--start of generic footer-->
+		<footer>
+			<div></div>
+			<ul>
+				<li><a href="https://github.com/GabrielSuttner/cp3.gabrielsuttner.com">GitHub Repository</a>  |</li>
+				<li>Email: <a href="">GabrielSuttner@gmail.com</a>  |</li>
+				<li>Last edited: 2/22/2019</li>
+			</ul>
+			<div></div>
+		</footer>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+		<script src="updatedvue.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
