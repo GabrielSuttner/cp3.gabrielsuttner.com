@@ -30,15 +30,15 @@
 							<th>Name</th>
 							<th>Contract Value</th>
 							<th>Commission</th>
-							<th class="endCol">Payed</th>
+							<th class="endCol">paid</th>
 							<th class="endcol">Delete</th>
 						</tr>
-						<tr v-for="sale in filterdSales">
+						<tr v-for="sale in filteredSalesArray">
 							<td><i class="fa fa-edit"></i>&nbsp{{sale.date}}</td>
 							<td>{{sale.name}}</td>
 							<td>${{sale.contractValue}}.00</th>
 							<td>${{sale.commission}}.00</td>
-							<td class="endCol"><input type="checkbox"  v-on:click="paySale(sale)" :checked="sale.payed == true"> </input></td>
+							<td class="endCol"><input type="checkbox"  v-on:click="paySale(sale)" :checked="sale.paid == true"> </input></td>
 							<td class="endcol"><button  v-on:click="deleteSale(sale)" class="delete">X</input> </td> 
 						</tr>
 						<tr id="table-head">
@@ -47,7 +47,7 @@
 							<th>Sales:</th>
 							<th>{{totalSales}}</th>
 							<th>paid:</th>
-							<th>{{payedCommissionTotal}}</th>
+							<th>${{paidCommissionTotal}}.00</th>
 						</tr>
 
 					</table>
@@ -63,8 +63,10 @@
 									<input type="radio" id="quarterly" v-model = "picked" value="Quarterly"/><label for="quarterly">Quarterly</label>
 									<input type="radio" id="bi-monthly" v-model = "picked" value="Bi-Monthly"/><label for="bi-monthly">Bi-Monthly</label>
 									<br>
-									<button type="submit" >Add Sale</button>
-									<button type="submit">Edit Sale</button>i
+									<button type="submit">Add Sale</button>
+									<button type="submit" v-on:click="showAll()">Show All</button>
+									<button type="submit" v-on:click="showPaid()">Show Paid</button>
+									<button type="submit" v-on:click="showUnpaid()">Show Unpaid</button>
 								</div>
 							</div>
 						</form>
